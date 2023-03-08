@@ -3,7 +3,7 @@ const axisos = require('axios')
 const app = express()
 app.set('view engine','ejs')
 require('dotenv').config();
-const PORT  = 3000
+const PORT  = 8888
 const querystring = require("querystring");
 const { default: axios } = require('axios');
 const { access } = require('fs');
@@ -57,43 +57,41 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/callback', (req, res) => {
-    const code = req.query.code || null;
-    axios({
-      method: 'post',
-      url: 'https://accounts.spotify.com/api/token',
-      data: querystring.stringify({
-        grant_type: 'authorization_code',
-        code: code,
-        redirect_uri: REDIRECT_URI
-      }),
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
-      },
+  const code = req.query.code || null;
+
+  axios({
+    method: 'post',
+    url: 'https://accounts.spotify.com/api/token',
+    data: querystring.stringify({
+      grant_type: 'authorization_code',
+      code: code,
+      redirect_uri: REDIRECT_URI
+    }),
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      Authorization: `Basic ${new Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+    },
+  })
+    .then(response => {
+      if (response.status === 200) {
+        const { access_token, refresh_token } = response.data;
+
+        const queryParams = querystring.stringify({
+          access_token,
+          refresh_token,
+        });
+       
+        res.redirect(`http://localhost:3000/?${queryParams}`);
+
+      } else {
+        res.redirect(`/?${querystring.stringify({ error: 'invalid_token' })}`);
+      }
     })
-      .then(response => {
-        if (response.status === 200) {
+    .catch(error => {
+      res.send(error);
+    });
+});
 
-            const { access_token, token_type} = response.data
-
-
-            const {refresh_token} = response.data
-
-            axios.get(`http://localhost:3000/refresh_token?refresh_token=${refresh_token}`)
-            .then(response => {
-                res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
-            })
-            .catch(error => {
-                res.send(error);
-            })
-        }else{
-          res.send(response)
-        }
-      })
-      .catch(error => {
-        res.send(error)
-      });
-  });
   app.get('/refresh_token', (req, res) => {
     const { refresh_token } = req.query;
   
