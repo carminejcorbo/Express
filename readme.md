@@ -1,6 +1,6 @@
-This project requires node js to be install on your computer. Please visit https://nodejs.org/en/
+This project requires node js to be installed on your computer. Please visit https://nodejs.org/en/
 
-Packages used
+Packages used:
     - concurrently
     - nodemon
 
