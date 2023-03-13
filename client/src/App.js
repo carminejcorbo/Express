@@ -6,7 +6,20 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  useLocation
 } from 'react-router-dom';
+
+// Scroll to top of page when changing routes
+// https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const [token, setToken] = useState(null);
@@ -32,6 +45,7 @@ function App() {
           </a>
         ) : (
           <Router>
+             <ScrollToTop />
             <Switch>
                 <Route path="/top-artists">
                   <h1>Top Artists</h1>
