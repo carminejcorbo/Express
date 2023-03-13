@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Express 👋</h1>
+
 <p>
   <a href="https://www.npmjs.com/package/Express" target="_blank">
     <img alt="Version" src="https://img.shields.io/npm/v/Express.svg">
