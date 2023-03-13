@@ -2,12 +2,12 @@
 <br> 
 Packages used:<br>
 <ul>
-   <li>concurrently</li> <br> 
-    <li>nodemon</li> <br> 
+   <li>concurrently</li> 
+    <li>nodemon</li> 
 </ul>
 Run these commands to install project:<br> 
 <ul>
-     <li>npm install </li><br> 
+     <li>npm install </li>
 </ul>
    
 You will need to make an account at https://developer.spotify.com/ <br> 
@@ -17,6 +17,6 @@ Rename .exampleEnv to **.env**
 
 Run commaand for project:<br> 
 <ul>
-     <li>npm start </li><br> 
+     <li>npm start </li>
 </ul>
 
