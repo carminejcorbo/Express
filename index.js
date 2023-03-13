@@ -1,3 +1,6 @@
+/* Express Index.js  */
+
+
 const express = require('express')
 const axisos = require('axios')
 const app = express()
@@ -74,13 +77,13 @@ app.get('/callback', (req, res) => {
   })
     .then(response => {
       if (response.status === 200) {
-        const { access_token, refresh_token } = response.data;
+        const { access_token, refresh_token, expires_in } = response.data;
 
         const queryParams = querystring.stringify({
           access_token,
           refresh_token,
+          expires_in,
         });
-       
         res.redirect(`http://localhost:3000/?${queryParams}`);
 
       } else {
@@ -116,5 +119,5 @@ app.get('/callback', (req, res) => {
   });
 
 app.listen(PORT, () => {
-    console.log(`Server is now listening on ${PORT}'`)
+    console.log(`Server is now listening on ${PORT}'`);
 })
