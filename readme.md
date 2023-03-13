@@ -13,7 +13,7 @@ Run these commands to install project:<br>
 You will need to make an account at https://developer.spotify.com/ <br> <br> 
 Go to Spotify Dev Dashboard and replace values for **CLIENT_ID** and  **CLIENT_SECRET** in .exampleEnv. <br> <br> 
 In the Spotify dashboard add the http://localhost:8888/callback as the REDIRECT_URI.<br> <br> 
-Rename .exampleEnv to **.env**<br> <br> </h4>
+Rename .exampleEnv to **.env**<br> <br>
 
 Run command for project:<br> 
 <ul>
