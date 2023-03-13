@@ -1,0 +1,7 @@
+/* This is an example .env  Replace the keys with your own information from spotify developer dashboard. 
+Rename this file to .env  afterward. */
+
+
+CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+REDIRECT_URI = 'http://localhost:8888/callback'
