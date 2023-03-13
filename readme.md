@@ -5,7 +5,7 @@ Packages used:<br>
    <li>concurrently</li> 
     <li>nodemon</li> 
 </ul>
-Run these commands to install project:<br> 
+Run commands in the project directory to install project:<br> 
 <ul>
      <li>npm install </li>
 </ul>
