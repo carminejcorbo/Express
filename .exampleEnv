@@ -1,5 +1,8 @@
 /* This is an example .env  Replace the keys with your own information from spotify developer dashboard. 
-Rename this file to .env  afterward. */
+Rename this file to .env afterward.  
+
+
+*Do not share these keys with the public.*
 
 
 CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
