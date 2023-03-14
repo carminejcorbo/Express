@@ -10,9 +10,11 @@
 
 >This project requires node js to be installed on your computer. Please visit https://nodejs.org/en/<br>
 
+
 ```sh
      npm install
 ```
+>This command hould automatically install all dependencies for you.
 
 # Setting up spotify authorization:
 
@@ -22,13 +24,8 @@
 >Rename .exampleEnv to **.env**<br>
 
 
-# Run command for project:
+# Run command to start project:
 
 ```sh
      npm run start
 ```
-
-
-
-
-
