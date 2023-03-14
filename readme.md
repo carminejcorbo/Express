@@ -14,7 +14,7 @@
 ```sh
      npm install
 ```
->This command hould automatically install all dependencies for you.
+>This command should automatically install all dependencies for you.
 
 # Setting up spotify authorization:
 
