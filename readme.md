@@ -13,20 +13,6 @@
 ```sh
      npm install
 ```
-# Packages used:
-
-> Installed in parent directory<br>
-```sh
-     npm i concurrently
-```
-```sh
-     npm run nodemon
-```
-
-> Installed in client directory<br>
-```sh
-     npm i react-router-dom@5.3.4
-```
 
 # Setting up spotify authorization:
 
