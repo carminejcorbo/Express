@@ -8,6 +8,18 @@ import {
   Route,
   useLocation
 } from 'react-router-dom';
+import styled from 'styled-components/macro';
+
+
+const StyledLoginButton = styled.a`
+  background-color: #1db954;
+  color: #ffffff;
+  padding: 10px 20px;
+  margin: 20px auto;
+  border-radius: 30px;
+  display: inline-block;
+`
+
 
 // Scroll to top of page when changing routes
 // https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
@@ -21,6 +33,8 @@ function ScrollToTop() {
   return null;
 }
 
+
+// Main function
 function App() {
   const [token, setToken] = useState(null);
   const [profile, setProfile] = useState(null);
@@ -40,9 +54,9 @@ function App() {
     <div className="App">
       <header className="App-header">
       {!token ? (
-          <a className="App-link" href="http://localhost:8888/login">
+          <StyledLoginButton className="App-link" href="http://localhost:8888/login">
             Log in to Spotify
-          </a>
+          </StyledLoginButton>
         ) : (
           <Router>
              <ScrollToTop />
