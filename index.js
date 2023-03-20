@@ -40,23 +40,25 @@ const generateRandomString = length => {
   
   
 const stateKey = 'spotify_auth_state';
- 
 
 app.get('/login', (req, res) => {
-    const state = generateRandomString(16);
-    res.cookie(stateKey, state);
-  
-    const scope = 'user-read-private user-read-email';
-  
-    const queryParams = querystring.stringify({
-      client_id: CLIENT_ID,
-      response_type: 'code',
-      redirect_uri: REDIRECT_URI,
-      state: state,
-      scope: scope,
-    });
-  
-    res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
+  const state = generateRandomString(16);
+  res.cookie(stateKey, state);
+
+  const scope = [
+    'user-read-private',
+    'user-read-email',
+    'user-top-read',
+  ].join(' ');
+
+  const queryParams = querystring.stringify({
+    client_id: CLIENT_ID,
+    response_type: 'code',
+    redirect_uri: REDIRECT_URI,
+    state: state,
+    scope: scope,
+  });
+  res.redirect(`https://accounts.spotify.com/authorize?${queryParams}`);
 });
 
 app.get('/callback', (req, res) => {
