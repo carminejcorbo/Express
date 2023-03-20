@@ -20,9 +20,6 @@ const StyledLoginButton = styled.a`
   display: inline-block;
 `;
 
-
-
-
 function ScrollToTop() {
   const { pathname } = useLocation();
 
@@ -32,7 +29,6 @@ function ScrollToTop() {
 
   return null;
 }
-
 
 // Main function
 function App() {
