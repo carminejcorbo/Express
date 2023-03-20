@@ -1,7 +1,17 @@
 import { useState, useEffect } from 'react';
 import { catchErrors } from '../utils';
-import { getCurrentUserProfile, getCurrentUserPlaylists, getTopArtists, getTopTracks} from '../spotify';
-import { SectionWrapper, ArtistsGrid, TrackList } from '../components';
+import {
+  getCurrentUserProfile,
+  getCurrentUserPlaylists,
+  getTopArtists,
+  getTopTracks
+} from '../spotify';
+import {
+  SectionWrapper,
+  ArtistsGrid,
+  TrackList,
+  PlaylistsGrid
+} from '../components';
 import { StyledHeader } from '../styles';
 
 const Profile = () => {
@@ -27,9 +37,6 @@ const Profile = () => {
 
     catchErrors(fetchData());
   }, []);
-  console.log(playlists);
-  console.log(topArtists);
-  console.log(topTracks);
 
   return (
     <>
@@ -54,14 +61,19 @@ const Profile = () => {
               </div>
             </div>
           </StyledHeader>
-          {topArtists && topTracks && (
+
+          {topArtists && topTracks && playlists && (
             <main>
               <SectionWrapper title="Top artists this month" seeAllLink="/top-artists">
                 <ArtistsGrid artists={topArtists.items.slice(0, 10)} />
               </SectionWrapper>
 
               <SectionWrapper title="Top tracks this month" seeAllLink="/top-tracks">
-                <TrackList tracks={topTracks.items.slice(0, 20)} />
+                <TrackList tracks={topTracks.items.slice(0, 10)} />
+              </SectionWrapper>
+
+              <SectionWrapper title="Playlists" seeAllLink="/playlists">
+                <PlaylistsGrid playlists={playlists.items.slice(0, 10)} />
               </SectionWrapper>
             </main>
           )}
@@ -70,4 +82,5 @@ const Profile = () => {
     </>
   )
 };
+
 export default Profile;
