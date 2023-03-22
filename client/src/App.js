@@ -6,9 +6,11 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { accessToken, logout } from './spotify';
-import { Login, Profile } from './pages';
+import { Login, Profile, TopArtists} from './pages';
 import { GlobalStyle } from './styles';
 import styled from 'styled-components/macro';
+
+
 
 const StyledLogoutButton = styled.button`
   position: absolute;
@@ -45,6 +47,7 @@ function App() {
     setToken(accessToken);
   }, []);
 
+
   return (
     <div className="app">
       <GlobalStyle />
@@ -55,26 +58,34 @@ function App() {
         <>
           <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
 
-          <Router>
+          <Router forceRefresh={true}>
+            
             <ScrollToTop />
 
             <Switch>
+
               <Route path="/top-artists">
-                <h1>Top Artists</h1>
+                  <TopArtists />
               </Route>
+
               <Route path="/top-tracks">
-                <h1>Top Tracks</h1>
+                  <h1>Top Tracks</h1>
               </Route>
+
               <Route path="/playlists/:id">
-                <h1>Playlist</h1>
+                < h1>Playlist</h1>
               </Route>
+
               <Route path="/playlists">
-                <h1>Playlists</h1>
+                  <h1>Playlists</h1>
               </Route>
+
               <Route path="/">
-                <Profile />
+                  <Profile />
               </Route>
+
             </Switch>
+
           </Router>
         </>
       )}
