@@ -1,6 +1,4 @@
 /* Express Index.js  */
-
-
 const express = require('express')
 const axisos = require('axios')
 const app = express()
@@ -12,15 +10,10 @@ const { default: axios } = require('axios');
 const { access } = require('fs');
 
 
-
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 const REDIRECT_URI = process.env.REDIRECT_URI
 
-
-app.get('/', (req, res)=>{
-    res.render('index', {text: "This is some text being passed to the EJS view engine."})
-})
 
 /**
  * Generates a random string containing numbers and letters
