@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { StyledSection } from '../styles';
 
+
 const SectionWrapper = ({ children, title, seeAllLink, breadcrumb }) => (
   <StyledSection>
     <div className="section__inner">
@@ -22,7 +23,7 @@ const SectionWrapper = ({ children, title, seeAllLink, breadcrumb }) => (
           )}
         </h2>
         {seeAllLink && (
-          <Link to={seeAllLink} className="section__see-all">See All</Link>
+            <Link to={seeAllLink} className="section__see-all">See All</Link>
         )}
       </div>
 
