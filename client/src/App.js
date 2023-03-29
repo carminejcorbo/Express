@@ -1,12 +1,7 @@
 import { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from 'react-router-dom';
 import { accessToken, logout } from './spotify';
-import { Login, Profile, TopArtists} from './pages';
+import { Login, Profile, TopArtists, Test} from './pages';
 import { GlobalStyle } from './styles';
 import styled from 'styled-components/macro';
 
@@ -30,12 +25,15 @@ const StyledLogoutButton = styled.button`
 
 // Scroll to top of page when changing routes
 // https://reactrouter.com/web/guides/scroll-restoration/scroll-to-top
+
+
+
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, [location.pathname]);
 
   return null;
 }
@@ -49,47 +47,38 @@ function App() {
 
 
   return (
-    <div className="app">
-      <GlobalStyle />
+<div className="app">
+  <GlobalStyle />
 
-      {!token ? (
-        <Login />
-      ) : (
-        <>
-          <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+  {!token ? (
+    <Login />
+  ) : (
+    <>
+      <StyledLogoutButton onClick={logout}>Log Out</StyledLogoutButton>
+      <Test/>
+      <Router>
+        
+        <ScrollToTop />
 
-          <Router forceRefresh={true}>
-            
-            <ScrollToTop />
+        <Routes>
 
-            <Switch>
+          <Route path="/top-artists" element={<TopArtists />} />
 
-              <Route path="/top-artists">
-                  <TopArtists />
-              </Route>
+          <Route path="/top-tracks" element={<h1>Top Tracks</h1>} />
 
-              <Route path="/top-tracks">
-                  <h1>Top Tracks</h1>
-              </Route>
+          <Route path="/playlists/:id" element={<h1>Playlist</h1>} />
 
-              <Route path="/playlists/:id">
-                < h1>Playlist</h1>
-              </Route>
+          <Route path="/playlists" element={<h1>Playlists</h1>} />
 
-              <Route path="/playlists">
-                  <h1>Playlists</h1>
-              </Route>
+          <Route path="/" element={<Profile />} />
 
-              <Route path="/">
-                  <Profile />
-              </Route>
-
-            </Switch>
-
-          </Router>
-        </>
-      )}
-    </div>
+        </Routes>
+        
+      </Router>
+      
+    </>
+  )}
+</div>
   );
 }
 
