@@ -33,6 +33,7 @@ const Profile = () => {
 
       const userTopTracks = await getTopTracks();
       setTopTracks(userTopTracks.data);
+
     };
 
     catchErrors(fetchData());
