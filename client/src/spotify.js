@@ -99,10 +99,11 @@ const getAccessToken = () => {
   }
 
   // If there is a valid access token in localStorage, use that
-  if (LOCALSTORAGE_VALUES.accessToken && LOCALSTORAGE_VALUES.accessToken !== 'undefined') {
-    return LOCALSTORAGE_VALUES.accessToken;
+  const accessToken = LOCALSTORAGE_VALUES.accessToken;
+  if (accessToken && accessToken !== 'undefined') {
+    return accessToken;
   }
-
+  
   // If there is a token in the URL query params, user is logging in for the first time
   if (queryParams[LOCALSTORAGE_KEYS.accessToken]) {
     // Store the query params in localStorage
